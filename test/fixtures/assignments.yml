@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  site: MyString
+  pubdate: 2014-02-28
+  complexity: 1
+
+two:
+  title: MyString
+  description: MyText
+  site: MyString
+  pubdate: 2014-02-28
+  complexity: 1

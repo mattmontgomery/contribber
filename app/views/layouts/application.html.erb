@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WwwRails</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to("Assignments", { action: 'index', controller: 'assignments' }) %></li>
+        <li><%= link_to("New", { action: 'new', controller: 'assignments' }) %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">User <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+          <% if not user_signed_in? %>
+            <li>
+                <a>
+                  <%= form_tag("/users/sign_in") do %>
+                      <p><input type="text" name="user[email]" class="form-control" placeholder="Email"></p>
+                      <p><input type="password" name="user[password]" class="form-control" placeholder="Password"></p>
+                      <button class="btn btn-small btn-primary">Sign in</button>
+                  <% end %>
+                </a>
+            </li>
+            <li><%= link_to("Sign in", { action: 'new', controller: 'devise/sessions'}) %></li>
+            <li><%= link_to("Register", { action: 'new', controller: 'devise/registrations'}) %></li>
+          <% else %>
+            <li>
+                <a>
+                <%= form_tag("users/sign_out", method: "delete") do %>
+                <button class="btn btn-small btn-warning">Sign out</button>
+                <% end %>
+                </a>
+            </li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+          <% end %>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+<% if @notice %><p class="row-fluid bg-info notice"><%= @notice %></p><% end %>
+<% if notice %><p class="row-fluid bg-info notice"><%= notice %></p><% end %>
+<% if alert %><p class="row-fluid bg-warning alert"><%= alert %></p><% end %>
+<%= yield %>
+</div>
+</body>
+</html>
