@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.3'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -36,6 +36,14 @@ gem 'bootstrap-sass', '~> 3.1.1'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
+end
+
+group :production do
+  gem 'postgres'
+end
+
+group :development do
+  gem 'sqlite3'
 end
 
 # Use ActiveModel has_secure_password
