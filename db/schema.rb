@@ -30,20 +30,10 @@ ActiveRecord::Schema.define(version: 20140228192250) do
     t.string   "series"
     t.string   "label"
     t.date     "publication_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "initials"
-  end
-
-  create_table "assignments_users", force: true do |t|
-    t.integer  "assignment_id"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "assignments_users", ["assignment_id"], name: "index_assignments_users_on_assignment_id"
-  add_index "assignments_users", ["user_id"], name: "index_assignments_users_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
