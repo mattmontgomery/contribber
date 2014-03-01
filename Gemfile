@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'devise'
 
+gem 'cancan'
+
 gem 'bootstrap-sass', '~> 3.1.1'
 
 group :doc do

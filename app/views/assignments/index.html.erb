@@ -1,35 +1,41 @@
 <h1>Listing assignments</h1>
 
-<table class="table">
+<table class="table table-striped">
   <thead>
     <tr>
+      <th>Publication date</th>
       <th>Title</th>
-      <th>Description</th>
-      <th>Site</th>
-      <th>Pubdate</th>
       <th>Complexity</th>
-      <th></th>
-      <th></th>
+      <th>Label</th>
+      <th>Series</th>
+      <th>Writer</th>
       <th></th>
     </tr>
   </thead>
-
   <tbody>
     <% @assignments.each do |assignment| %>
       <tr>
-        <td><%= assignment.title %></td>
-        <td><%= assignment.description %></td>
-        <td><%= assignment.site %></td>
-        <td><%= assignment.pubdate %></td>
+        <td><%= assignment.publication_date %></td>
+        <td><%= link_to assignment.title, edit_assignment_path(assignment) %></td>
         <td><%= assignment.complexity %></td>
-        <td><%= link_to 'Show', assignment %></td>
-        <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
-        <td><%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= assignment.label %></td>
+        <td><%= assignment.series %></td>
+        <td><%= assignment.initials %></td>
+        <td>
+          <div class="btn-group invisible">
+            <%= link_to 'Show', assignment, class: 'btn btn-info btn-xs' %>
+            <%= link_to 'Edit', edit_assignment_path(assignment), class: 'btn btn-primary btn-xs' %>
+            <%= link_to 'Destroy', assignment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning btn-xs' %>
+          </div>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+<script>
+$(function(){
+  $('table tbody tr').on('click', function() { $(this).find('.btn-group').toggleClass('invisible'); });
+})
+</script>
 
-<%= link_to 'New Assignment', new_assignment_path %>
+<%= link_to 'New Assignment', new_assignment_path, class: 'btn btn-primary' %>

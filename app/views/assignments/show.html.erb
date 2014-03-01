@@ -1,29 +1,22 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
+<h2>
   <%= @assignment.title %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @assignment.description %>
-</p>
+  <% if @assignment.initials %><p><small>Writers: <%= @assignment.initials %></small></p><% end %>
+</h2>
 
-<p>
-  <strong>Site:</strong>
-  <%= @assignment.site %>
-</p>
+<div class="row row-fluid">
+  <div class="col-sm-4">
+  <h4>Pub. date <small><%= @assignment.publication_date %></small></h4>
+    <h4>Label <small><%= @assignment.label %></h4>
+    <h4>Series <small><%= @assignment.series  %></h4>
+    <h4>Complexity <small><%= @assignment.complexity %></small></h4>
+  </div>
+  <div class="col-md-8">
+    <p class="lead"><%= @assignment.description %></p>
+  </div>
+</div>
 
-<p>
-  <strong>Pubdate:</strong>
-  <%= @assignment.pubdate %>
-</p>
-
-<p>
-  <strong>Complexity:</strong>
-  <%= @assignment.complexity %>
-</p>
-
-<%= link_to 'Edit', edit_assignment_path(@assignment) %> |
-<%= link_to 'Back', assignments_path %>
+<div class="btn-group">
+<%= link_to 'Edit', edit_assignment_path(@assignment), class: 'btn btn-default' %>
+<%= link_to 'Back', assignments_path, class: 'btn btn-default' %>
+</div>

@@ -3,13 +3,15 @@
 one:
   title: MyString
   description: MyText
-  site: MyString
-  pubdate: 2014-02-28
   complexity: 1
+  series: MyString
+  label: MyString
+  publication_date: 2014-02-28
 
 two:
   title: MyString
   description: MyText
-  site: MyString
-  pubdate: 2014-02-28
   complexity: 1
+  series: MyString
+  label: MyString
+  publication_date: 2014-02-28

@@ -6,6 +6,8 @@ WwwRails::Application.routes.draw do
   get "assignments/read"
   get "assignments/update"
   get "assignments/delete"
+  get "assignments/claim"
+
   devise_for :users
   resources :pages
   root :to => "pages#index"

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WwwRails</title>
+  <title>Contribber</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -17,18 +17,20 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="#">Contribber</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><%= link_to("Assignments", { action: 'index', controller: 'assignments' }) %></li>
-        <li><%= link_to("New", { action: 'new', controller: 'assignments' }) %></li>
-      </ul>
+        <% if user_signed_in? %>
+        <ul class="nav navbar-nav">
+            <li><%= link_to("Assignments", { action: 'index', controller: '/assignments' }) %></li>
+            <li><%= link_to("New Assignment", { action: 'new', controller: '/assignments' }) %></li>
+        </ul>
+        <% end %>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">User <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">User <% if user_signed_in? %>(signed in)<% end %><b class="caret"></b></a>
           <ul class="dropdown-menu">
           <% if not user_signed_in? %>
             <li>
@@ -45,7 +47,7 @@
           <% else %>
             <li>
                 <a>
-                <%= form_tag("users/sign_out", method: "delete") do %>
+                <%= form_tag("/users/sign_out", method: "delete") do %>
                 <button class="btn btn-small btn-warning">Sign out</button>
                 <% end %>
                 </a>
@@ -63,8 +65,8 @@
 </nav>
 
 <div class="container">
-<% if @notice %><p class="row-fluid bg-info notice"><%= @notice %></p><% end %>
-<% if notice %><p class="row-fluid bg-info notice"><%= notice %></p><% end %>
+<% if @notice %><p class="row-fluid bg-info alert"><%= @notice %></p><% end %>
+<% if notice %><p class="row-fluid bg-info alert"><%= notice %></p><% end %>
 <% if alert %><p class="row-fluid bg-warning alert"><%= alert %></p><% end %>
 <%= yield %>
 </div>
