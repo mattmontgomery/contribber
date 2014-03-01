@@ -5,7 +5,7 @@ class AssignmentsController < ApplicationController
   # GET /assignments
   # GET /assignments.json
   def index
-    @assignments = Assignment.all
+    @assignments = Assignment.where("publication_date >= :start_date",{start_date: Date.today - 3}).order(publication_date: :asc)
   end
 
   # GET /assignments/1
