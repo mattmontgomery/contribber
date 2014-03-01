@@ -29,8 +29,9 @@
         </ul>
         <% end %>
       <ul class="nav navbar-nav navbar-right">
+        <% if not user_signed_in? %><li><%= link_to("Register", { action: 'new', controller: 'devise/registrations'}) %></li><% end %>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">User <% if user_signed_in? %>(signed in)<% end %><b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><% if user_signed_in? %>User<% else %>Sign in<% end %><b class="caret"></b></a>
           <ul class="dropdown-menu">
           <% if not user_signed_in? %>
             <li>
@@ -42,8 +43,6 @@
                   <% end %>
                 </a>
             </li>
-            <li><%= link_to("Sign in", { action: 'new', controller: 'devise/sessions'}) %></li>
-            <li><%= link_to("Register", { action: 'new', controller: 'devise/registrations'}) %></li>
           <% else %>
             <li>
                 <a>
@@ -52,11 +51,8 @@
                 <% end %>
                 </a>
             </li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+            <li><%= link_to("My profile", { action: 'edit', controller: 'devise/registrations'}) %></li>
           <% end %>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
           </ul>
         </li>
       </ul>
