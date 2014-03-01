@@ -35,6 +35,8 @@ gem 'cancan'
 
 gem 'bootstrap-sass', '~> 3.1.1'
 
+gem 'unicorn'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -42,7 +44,6 @@ end
 
 group :production do
   gem 'pg'
-  gem 'unicorn'
 end
 
 group :development do
