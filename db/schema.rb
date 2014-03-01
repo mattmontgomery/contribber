@@ -13,16 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140228192250) do
 
-  create_table "assignment_users", force: true do |t|
-    t.integer  "assignment_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "assignment_users", ["assignment_id"], name: "index_assignment_users_on_assignment_id"
-  add_index "assignment_users", ["user_id"], name: "index_assignment_users_on_user_id"
-
   create_table "assignments", force: true do |t|
     t.string   "title"
     t.text     "description"
@@ -30,9 +20,9 @@ ActiveRecord::Schema.define(version: 20140228192250) do
     t.string   "series"
     t.string   "label"
     t.date     "publication_date"
-    t.string   "initials"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "initials"
   end
 
   create_table "users", force: true do |t|
@@ -46,6 +36,11 @@ ActiveRecord::Schema.define(version: 20140228192250) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.boolean  "confirmable"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
