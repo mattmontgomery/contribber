@@ -20,7 +20,7 @@ test:
 
 production:
   adapter: postgresql
-  host: ec2-54-221-206-165.compute-1.amazonaws.com
+  host: ENV["DATABASE_URL"]
   database: dci77noqdv06av
   user: httczjhqgqtrnh
   port: 5432
